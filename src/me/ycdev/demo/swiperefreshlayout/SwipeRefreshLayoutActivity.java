@@ -120,8 +120,12 @@ public class SwipeRefreshLayoutActivity extends Activity implements OnRefreshLis
         final int id = item.getItemId();
         switch(id) {
             case R.id.force_refresh:
-                mSwipeRefreshWidget.setRefreshing(true);
-                refresh();
+                if (mSwipeRefreshWidget.isRefreshing()) {
+                    mSwipeRefreshWidget.setRefreshing(false);
+                } else {
+                    mSwipeRefreshWidget.setRefreshing(true);
+//                    refresh();
+                }
                 return true;
         }
         return false;
@@ -129,6 +133,6 @@ public class SwipeRefreshLayoutActivity extends Activity implements OnRefreshLis
 
     private void refresh() {
         mHandler.removeCallbacks(mRefreshDone);
-        mHandler.postDelayed(mRefreshDone, 1000);
+        mHandler.postDelayed(mRefreshDone, 10000);
     }
 }

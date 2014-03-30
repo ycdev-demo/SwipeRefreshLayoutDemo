@@ -56,12 +56,12 @@ import android.widget.AbsListView;
  * refresh of the content wherever this gesture is used.</p>
  */
 public class SwipeRefreshLayout extends ViewGroup {
-    private static final long RETURN_TO_ORIGINAL_POSITION_TIMEOUT = 300;
+    private static final long RETURN_TO_ORIGINAL_POSITION_TIMEOUT = 500;
     private static final float ACCELERATE_INTERPOLATION_FACTOR = 1.5f;
     private static final float DECELERATE_INTERPOLATION_FACTOR = 2f;
     private static final float PROGRESS_BAR_HEIGHT = 4;
     private static final float MAX_SWIPE_DISTANCE_FACTOR = .6f;
-    private static final int REFRESH_TRIGGER_DISTANCE = 120;
+    private static final int REFRESH_TRIGGER_DISTANCE = 200;
 
     private SwipeProgressBar mProgressBar; //the thing that shows progress is going
     private View mTarget; //the content that gets pulled down
@@ -178,8 +178,9 @@ public class SwipeRefreshLayout extends ViewGroup {
 
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
-        mMediumAnimationDuration = getResources().getInteger(
-                android.R.integer.config_mediumAnimTime);
+//        mMediumAnimationDuration = getResources().getInteger(
+//                android.R.integer.config_mediumAnimTime);
+        mMediumAnimationDuration = 2000;
 
         setWillNotDraw(false);
         mProgressBar = new SwipeProgressBar(this);

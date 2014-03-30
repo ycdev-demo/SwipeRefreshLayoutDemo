@@ -42,10 +42,10 @@ final class SwipeProgressBar {
     private final static int COLOR4 = 0x1a000000;
 
     // The duration of the animation cycle.
-    private static final int ANIMATION_DURATION_MS = 2000;
+    private static final int ANIMATION_DURATION_MS = 4000;
 
     // The duration of the animation to clear the bar.
-    private static final int FINISH_ANIMATION_DURATION_MS = 1000;
+    private static final int FINISH_ANIMATION_DURATION_MS = 10000;
 
     // Interpolator for varying the speed of the animation.
     private static final Interpolator INTERPOLATOR = BakedBezierInterpolator.getInstance();
@@ -167,7 +167,7 @@ final class SwipeProgressBar {
                 // Radius of the circle is half of the screen.
                 float clearRadius = width / 2 * INTERPOLATOR.getInterpolation(pct);
                 mClipRect.set(cx - clearRadius, 0, cx + clearRadius, height);
-                canvas.saveLayerAlpha(mClipRect, 0, 0);
+                canvas.saveLayerAlpha(mClipRect, 80, 0);
                 // Only draw the trigger if there is a space in the center of
                 // this refreshing view that needs to be filled in by the
                 // trigger. If the progress view is just still animating, let it
